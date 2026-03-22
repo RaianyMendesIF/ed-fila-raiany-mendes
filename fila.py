@@ -25,11 +25,12 @@ class Queue:
     def dequeue(self):
         if self._size > 0:
             elem  = self.head.data
-            if self.head.next:
-                self.head = self.head.next
-            else:
-                self.head = None
-            self._size = self._size - 1
+            self.head = self.head.next
+    
+            if self.head is None:
+                self.tail = None
+
+            self._size -= 1
             return elem
         raise IndexError("A fila está vazia!")
 
@@ -37,7 +38,7 @@ class Queue:
     def show(self):
         pointer = self.head
         while pointer:
-            print(f"{pointer.data} - {pointer.time}")
+            print(f"({pointer.data} - {pointer.time})")
             pointer = pointer.next
 
 
@@ -52,6 +53,8 @@ class Queue:
                 time = self.head.time
                 self.dequeue()
                 self.enqueue(node, time)
+            #self.show()
+            #print()
 
 
 ## TESTANDO
