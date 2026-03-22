@@ -71,7 +71,6 @@ fila.show()
 
 fila.quantum(4)
 
-fila.show()
 
 
 
